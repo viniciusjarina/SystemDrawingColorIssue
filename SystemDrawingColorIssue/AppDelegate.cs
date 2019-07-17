@@ -24,8 +24,16 @@ namespace SystemDrawingColorIssue
 			// If not required for your application you can safely delete this method
 
 			Assembly assembly = Assembly.LoadFrom("LibUsingSystemColor.dll");
-			Type type = assembly.GetExportedTypes()[0];
-			object class1 = Activator.CreateInstance(type);
+			Type type = assembly.GetType("LibUsingSystemColor.Class2");
+			try
+			{
+				object class1 = Activator.CreateInstance(type);
+			}
+			catch (Exception e)
+			{
+				string s = e.ToString();
+				Console.WriteLine(s);
+			}
 			return true;
 		}
 
